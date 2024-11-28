@@ -1,0 +1,224 @@
+---
+title: "L01 Modeling Introduction"
+subtitle: "Data Science 2 with R (STAT 301-2)"
+author: "Allison Kane"
+
+format:
+  html:
+    toc: true
+    embed-resources: true
+    code-fold: false
+    link-external-newwindow: true
+
+execute:
+  warning: false
+  
+from: markdown+emoji 
+---
+
+::: {.callout-tip icon=false}
+
+## Github Repo Link
+
+[Allison Repo Link](https://github.com/stat301-2-2024-winter/L01-modeling-introduction-akane2460.git)
+
+:::
+
+## Exercises
+
+### Exercise 1 
+
+Download and install the most recent versions of R and RStudio. Install and load `tidyverse`, `tidymodels`, and `ISLR` or `ISLR2`.
+
+::: {.callout-tip icon="false"}
+## Solution
+
+```{r}
+#| label: ex-1
+
+# Load package(s) here!
+library(tidyverse)
+library(tidymodels)
+library(ISLR)
+library(ISLR2)
+
+```
+
+:::
+
+### Exercise 2
+
+Use the appropriate tidyverse `read_` function(s) to load the `Auto` and `College` datasets from the `data/` subdirectory into R.
+
+::: {.callout-tip icon="false"}
+## Solution
+
+I have completed this task. See .R file for additional details.
+
+:::
+
+### Exercise 3
+
+Use proper data typing to clean the `Auto` and `College` dataset and write the clean dataset to a `processed` folder within the `data` folder that preserves the data types.
+
+::: {.callout-tip icon="false"}
+## Solution
+
+I have completed this task. See `processed` folder within `data` for confirmation.
+
+:::
+
+### Exercise 4
+
+Using the `Auto` dataset...
+
+#### Part (a)
+
+Determine which variables could be used as an outcome variable to a classification problem and which variables could be used as an outcome variable to a regression problem.
+
+::: {.callout-tip icon="false"}
+## Solution
+
+An outcome variable for a classification problem could be origin. 
+An outcome variable for a regression problem could be acceleration. 
+
+:::
+
+#### Part (b) 
+
+Choose and state **one** variable to be the response in a **classification** problem. 
+
+::: {.callout-tip icon="false"}
+## Solution
+
+The variable origin would be relevant to this classification problem: given a car and its given specifications, predict its origin (American, European or Japanese).
+
+:::
+
+#### Part (c) 
+
+Perform a short EDA to determine which variables might make for good predictors for your chosen response variable. List which variables you would use in this model (you don't need to actually create a model).
+
+::: {.callout-tip icon="false"}
+## Solution
+
+The variables that I would use in this model that have the best potential for making reliable predictions for a vehicle's origin are mpg and weight. These two variables see considerable differences across all three origins (American, European, Japanese) and seem to be good candidates for this model. 
+
+:::
+
+#### Part (d) 
+
+What are $n$ and $p$ (sample size and number of predictors) for this hypothetical model?
+
+::: {.callout-tip icon="false"}
+## Solution
+
+Sample size includes 397 cars (n = 397) with 2 predictors for this hypothetical model (based on my variable selections in part C).
+
+:::
+
+### Exercise 5
+
+Using the `College` dataset...
+
+#### Part (a) 
+
+Determine which variables could be used as an outcome variable to a classification problem and which variables could be used as an outcome variable to a regression problem.
+
+
+::: {.callout-tip icon="false"}
+## Solution
+
+A variable that could be used as an outcome variable to a classifcation problem could be the `private` variable. Variable(s) that could be used as an outcome variable to a regression problem could be the 
+
+:::
+
+#### Part (b)
+
+Choose **one** variable to be the response in a **regression** problem.
+
+::: {.callout-tip icon="false"}
+## Solution
+
+The variable grad_rate would be relevant to this regression problem: based on an instutitions populations, expenditures and other factors how is their graduation rate affected? (For example, if a university spends more money on student instruction and lowers tuition costs, would grad rate improve?)
+
+:::
+
+#### Part (c) 
+
+Perform a short EDA to determine which variables might make for good predictors for your chosen response variable. List which variables you would use in this model (you don't need to actually create a model).
+
+::: {.callout-tip icon="false"}
+## Solution
+
+The variables that I would use in this model that have the best potential for making reliable predictions for a college's graduation rate are top10perc, top25perc and outstate. 
+
+:::
+
+#### Part (d) 
+
+What are $n$ and $p$ (sample size and number of predictors) for this hypothetical model?
+
+::: {.callout-tip icon="false"}
+## Solution
+
+The sample size is 777 entries (n = 777) with 3 predictors for this hypothetical model (based on my variable selections in part C).
+
+:::
+
+### Exercise 6
+
+For each of the following examples, please describe: (1) whether the scenario is a classification or regression problem; (2) whether the goal is inferential or predictive; and (3) provide both the sample size ($n$) and the number of predictors ($p$).
+
+#### Part (a) 
+
+We collect a set of data on the top 500 firms in the US. For each firm we record profit, number of employees, industry, and CEO salary. We are interested in understanding which factors affect CEO salary.
+
+::: {.callout-tip icon="false"}
+## Solution
+
+(1) This scenario is a regression problem. 
+(2) It is an inferential model.
+(3) The sample size is 500 and the number of predictors is 3. 
+
+:::
+
+#### Part (b)
+
+We are considering launching a new product and wish to know whether it will be a success or a failure. We collect data on 20 similar products that were previously launched. For each product we have recorded whether it was a success or a failure, the price charged for the product, the marketing budget, the competition price, and ten other variables.
+
+::: {.callout-tip icon="false"}
+## Solution
+
+(1) This scenario is a classification problem. 
+(2) It is a predictive model.
+(3) The sample size is 20 and the number of predictors is 13. 
+
+:::
+
+#### Part (c)
+
+We are interested in predicting the % change in the USD/Euro exchange rate in relation to the weekly changes in the world stock markets. We collect data once a week for all of 2012. For each week we record the % change in the USD/Euro rate, the % change in the US market, the % change in the British market, and the % change in the German market.
+
+::: {.callout-tip icon="false"}
+## Solution
+
+(1) This scenario is a regression problem. 
+(2) It is a inferential model.
+(3) The sample size is 52 (the number of weeks in 2012) and the number of predictors is 3. 
+
+:::
+
+### Exercise 7
+
+Provide two real-life examples -- one of a case where someone might use a mechanistic model, and one where they might use an empirically driven model. For each, explain why. These examples must differ from those in the book.
+
+::: {.callout-tip icon="false"}
+## Solution
+
+Mechanistic models typically seek to understand the underlying causes and driving factors of processes in order to predict an end result. An example of this includes developing a model describing likelihood cancer metastasis in a patient. In making predictions about a patient's cancer progression, the model must understand principles of *how* and *why* cancer might spread, what conditions make it favorable to spread, what regions are more at risk, etc. This model can't use predictors attained from simply examining patterns of previous patients because the patterns of cancer spread can only be understood and reliably predicted by understanding the biological basis of metastasis. 
+
+Empirically driven models typically rely more on observational data and recognizing patterns to produce results, rather than understanding the mechanisms that underlie why these patterns occur. An example of this is an online retailer using a model to predict what time of year swimsuit sales are going to peak based on past purchase and browsing history of customers. This model doesn't take into account why in certain times of year purchasing swimsuits is more popular (changing seasons, vacation timing, regional differences, etc.), it just predicts based on existing patterns that have been observed. 
+
+:::
+
